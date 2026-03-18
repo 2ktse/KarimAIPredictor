@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Karim AI Predictor</title>
+  <title>Omar AI Predictor</title>
 
-  <!-- Arabic font -->
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
 
   <style>
@@ -52,17 +51,42 @@
       margin: 0 auto 10px;
     }
 
+    /* 🔥 СВЕТЯЩИЙСЯ ЗАГОЛОВОК */
     h1 {
       text-align: center;
-      color: var(--green);
-      font-size: 26px;
+      color: #00ff9d;
+      font-size: 32px;
       font-weight: 800;
-      margin-bottom: 6px;
+      margin-bottom: 10px;
+      animation: glowPulse 2s infinite ease-in-out;
+      text-shadow:
+        0 0 8px #00ff9d,
+        0 0 16px #00ff9d,
+        0 0 32px rgba(0,255,157,0.6);
+    }
+
+    @keyframes glowPulse {
+      0% {
+        text-shadow:
+          0 0 6px #00ff9d,
+          0 0 12px #00ff9d;
+      }
+      50% {
+        text-shadow:
+          0 0 12px #00ff9d,
+          0 0 24px #00ff9d,
+          0 0 40px rgba(0,255,157,0.8);
+      }
+      100% {
+        text-shadow:
+          0 0 6px #00ff9d,
+          0 0 12px #00ff9d;
+      }
     }
 
     .subtitle {
       text-align: center;
-      font-size: 14px;
+      font-size: 16px;
       color: var(--muted);
       margin-bottom: 18px;
     }
@@ -76,7 +100,7 @@
     }
 
     .badge {
-      font-size: 12px;
+      font-size: 13px;
       padding: 6px 10px;
       border-radius: 999px;
       background: rgba(255,255,255,0.05);
@@ -88,6 +112,7 @@
       display: block;
       margin: 14px 0 6px;
       font-weight: 600;
+      font-size: 15px;
     }
 
     .games {
@@ -109,11 +134,12 @@
 
     .input {
       width: 100%;
-      padding: 12px;
+      padding: 14px;
       border-radius: 12px;
       border: none;
       background: #1a2336;
       color: white;
+      font-size: 15px;
     }
 
     .hint {
@@ -136,7 +162,7 @@
       border-radius: 12px;
       border: none;
       font-weight: 700;
-      font-size: 16px;
+      font-size: 18px;
       background: linear-gradient(90deg, var(--orange), var(--green));
       color: black;
       cursor: pointer;
@@ -170,7 +196,7 @@
       display: flex;
       justify-content: space-between;
       margin-top: 16px;
-      font-size: 13px;
+      font-size: 14px;
       color: var(--muted);
     }
 
@@ -195,7 +221,7 @@
   <div class="container">
     <img src="https://flagcdn.com/w320/eg.png" class="flag">
 
-    <h1>Karim AI Predictor</h1>
+    <h1>Omar AI Predictor</h1>
     <div class="subtitle">توقعات ذكية • جنيه مصري • نسخة مصر</div>
 
     <div class="badges">
@@ -229,7 +255,7 @@
       <div>⏳ ينتهي خلال <span id="countdown">05:00</span></div>
     </div>
 
-    <div class="footer">تم التطوير بواسطة <strong>KarimTech</strong></div>
+    <div class="footer">تم التطوير بواسطة <strong>OmarTech</strong></div>
   </div>
 
   <script>

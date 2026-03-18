@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Karim AI Predictor</title>
+
+  <!-- Arabic font -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --orange: #ff7a00;
+      --green: #0cb86a;
+      --blue: #1b57f2;
+      --bg: #0d1117;
+      --card: #1a2336;
+      --muted: #9aa4b2;
+      --text: #e9edf3;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      background: var(--card);
+      border-radius: 20px;
+      padding: 28px 24px;
+      width: min(440px, 100%);
+      box-shadow: 0 0 25px rgba(0,0,0,0.5);
+      animation: fadeIn 0.8s ease;
+    }
+
+    @keyframes fadeIn {
+      from {opacity:0; transform: translateY(20px);}
+      to {opacity:1;}
+    }
+
+    .flag {
+      width: 64px;
+      display: block;
+      margin: 0 auto 10px;
+    }
+
+    h1 {
+      text-align: center;
+      color: var(--green);
+      font-size: 26px;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .subtitle {
+      text-align: center;
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .badges {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+
+    .badge {
+      font-size: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: var(--muted);
+    }
+
+    label {
+      display: block;
+      margin: 14px 0 6px;
+      font-weight: 600;
+    }
+
+    .games {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .game {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px;
+      background: #1a2336;
+      border-radius: 12px;
+      cursor: pointer;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .input {
+      width: 100%;
+      padding: 12px;
+      border-radius: 12px;
+      border: none;
+      background: #1a2336;
+      color: white;
+    }
+
+    .hint {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .warning {
+      display: none;
+      color: var(--orange);
+      font-size: 13px;
+      margin-top: 6px;
+    }
+
+    .btn {
+      width: 100%;
+      margin-top: 18px;
+      padding: 14px;
+      border-radius: 12px;
+      border: none;
+      font-weight: 700;
+      font-size: 16px;
+      background: linear-gradient(90deg, var(--orange), var(--green));
+      color: black;
+      cursor: pointer;
+    }
+
+    .btn:disabled {
+      opacity: 0.6;
+    }
+
+    .progress {
+      display: none;
+      height: 10px;
+      background: #1a2336;
+      border-radius: 999px;
+      overflow: hidden;
+      margin-top: 14px;
+    }
+
+    .bar {
+      height: 100%;
+      width: 0;
+      background: linear-gradient(90deg, var(--green), var(--blue));
+      animation: fill 2.4s forwards;
+    }
+
+    @keyframes fill {
+      to { width: 100%; }
+    }
+
+    .meta {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 16px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    #online { color: var(--green); }
+
+    .footer {
+      text-align: center;
+      font-size: 12px;
+      margin-top: 14px;
+      color: var(--muted);
+    }
+
+    .footer strong { color: white; }
+
+    @media (max-width: 420px) {
+      .games { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <img src="https://flagcdn.com/w320/eg.png" class="flag">
+
+    <h1>Karim AI Predictor</h1>
+    <div class="subtitle">توقعات ذكية • جنيه مصري • نسخة مصر</div>
+
+    <div class="badges">
+      <div class="badge">🔒 آمن</div>
+      <div class="badge">⚡ ذكاء اصطناعي</div>
+      <div class="badge">🇪🇬 مصر</div>
+    </div>
+
+    <label>اختر اللعبة</label>
+    <div class="games">
+      <label class="game"><input type="radio" name="game" checked> 🍎 Apple of Fortune</label>
+      <label class="game"><input type="radio" name="game"> ✈️ Aviator</label>
+      <label class="game"><input type="radio" name="game"> 💣 Mines</label>
+      <label class="game"><input type="radio" name="game"> 🐔 Chicken Road</label>
+      <label class="game"><input type="radio" name="game"> ⚽ Penalty</label>
+    </div>
+
+    <label>رقم حساب 1xBet</label>
+    <input id="account" class="input" placeholder="مثال: 1234567890" maxlength="10">
+    <div class="hint">أدخل رقم مكون من 10 أرقام</div>
+    <div id="warning" class="warning">يرجى إدخال رقم صحيح</div>
+
+    <button id="start" class="btn" disabled>ابدأ</button>
+
+    <div class="progress" id="progress">
+      <div class="bar"></div>
+    </div>
+
+    <div class="meta">
+      <div>🟢 المتصلين: <span id="online">160</span></div>
+      <div>⏳ ينتهي خلال <span id="countdown">05:00</span></div>
+    </div>
+
+    <div class="footer">تم التطوير بواسطة <strong>KarimTech</strong></div>
+  </div>
+
+  <script>
+    let t = 300;
+    const cd = document.getElementById("countdown");
+
+    setInterval(() => {
+      if (t > 0) t--;
+      const m = String(Math.floor(t/60)).padStart(2,"0");
+      const s = String(t%60).padStart(2,"0");
+      cd.textContent = m + ":" + s;
+    },1000);
+
+    const online = document.getElementById("online");
+    setInterval(() => {
+      const base = 160;
+      const jitter = Math.floor(Math.random()*8)-3;
+      online.textContent = base + jitter;
+    },2500);
+
+    const acc = document.getElementById("account");
+    const btn = document.getElementById("start");
+    const warn = document.getElementById("warning");
+    const prog = document.getElementById("progress");
+
+    acc.addEventListener("input", () => {
+      const valid = /^\d{10}$/.test(acc.value);
+      btn.disabled = !valid;
+      warn.style.display = valid ? "none" : "block";
+    });
+
+    btn.addEventListener("click", () => {
+      prog.style.display = "block";
+      const bar = prog.querySelector(".bar");
+      bar.style.animation = "none";
+      bar.offsetHeight;
+      bar.style.animation = "fill 2.4s forwards";
+
+      setTimeout(() => {
+        alert("❌ لم يتم العثور على مبلغ الإيداع البالغ 300 جنيه مصري. يرجى إيداع مبلغ للمتابعة.");
+      },2400);
+    });
+  </script>
+</body>
+</html>

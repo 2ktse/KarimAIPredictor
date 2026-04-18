@@ -1,303 +1,328 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Omar AI Predictor</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Karim AI Predictor</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-  <style>
-    :root {
-      --orange: #ff7a00;
-      --green: #0cb86a;
-      --blue: #1b57f2;
-      --bg: #0d1117;
-      --card: #1a2336;
-      --muted: #9aa4b2;
-      --text: #e9edf3;
-    }
+<style>
+:root{
+--bg:#070b14;
+--card:#121a2b;
+--text:#eaf0ff;
+--muted:#93a4b8;
+--green:#19d38a;
+--blue:#2b6fff;
+--orange:#ff7a00;
+}
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+*{margin:0;padding:0;box-sizing:border-box}
 
-    body {
-      font-family: 'Cairo', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      padding: 20px;
-    }
+body{
+font-family:'Cairo',sans-serif;
+background:radial-gradient(circle at top,#101a33,#070b14);
+color:var(--text);
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+padding:18px;
+}
 
-    .container {
-      background: var(--card);
-      border-radius: 20px;
-      padding: 28px 24px;
-      width: min(440px, 100%);
-      box-shadow: 0 0 25px rgba(0,0,0,0.5);
-      animation: fadeIn 0.8s ease;
-    }
+.container{
+width:min(460px,100%);
+background:rgba(18,26,43,0.92);
+border:1px solid rgba(255,255,255,0.06);
+border-radius:22px;
+padding:24px;
+box-shadow:0 0 60px rgba(0,0,0,0.8);
+}
 
-    @keyframes fadeIn {
-      from {opacity:0; transform: translateY(20px);}
-      to {opacity:1;}
-    }
+.logo{
+text-align:center;
+font-size:26px;
+font-weight:900;
+color:var(--green);
+}
 
-    .flag {
-      width: 64px;
-      display: block;
-      margin: 0 auto 10px;
-    }
+.subtitle{
+text-align:center;
+font-size:13px;
+color:var(--muted);
+margin-top:4px;
+}
 
-    /* 🔥 СВЕТЯЩИЙСЯ ЗАГОЛОВОК */
-    h1 {
-      text-align: center;
-      color: #00ff9d;
-      font-size: 32px;
-      font-weight: 800;
-      margin-bottom: 10px;
-      animation: glowPulse 2s infinite ease-in-out;
-      text-shadow:
-        0 0 8px #00ff9d,
-        0 0 16px #00ff9d,
-        0 0 32px rgba(0,255,157,0.6);
-    }
+.badges{
+display:flex;
+justify-content:center;
+gap:8px;
+flex-wrap:wrap;
+margin-top:12px;
+margin-bottom:12px;
+}
 
-    @keyframes glowPulse {
-      0% {
-        text-shadow:
-          0 0 6px #00ff9d,
-          0 0 12px #00ff9d;
-      }
-      50% {
-        text-shadow:
-          0 0 12px #00ff9d,
-          0 0 24px #00ff9d,
-          0 0 40px rgba(0,255,157,0.8);
-      }
-      100% {
-        text-shadow:
-          0 0 6px #00ff9d,
-          0 0 12px #00ff9d;
-      }
-    }
+.badge{
+font-size:12px;
+padding:6px 10px;
+border-radius:999px;
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.07);
+}
 
-    .subtitle {
-      text-align: center;
-      font-size: 16px;
-      color: var(--muted);
-      margin-bottom: 18px;
-    }
+.section-title{
+margin:14px 0 8px;
+font-weight:800;
+font-size:14px;
+color:#cfe0ff;
+}
 
-    .badges {
-      display: flex;
-      justify-content: center;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-bottom: 16px;
-    }
+/* GAME CARDS */
+.games{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+}
 
-    .badge {
-      font-size: 13px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
-      color: var(--muted);
-    }
+.game{
+position:relative;
+padding:12px;
+border-radius:14px;
+background:var(--card);
+border:2px solid rgba(255,255,255,0.08);
+cursor:pointer;
+display:flex;
+align-items:center;
+gap:10px;
+transition:.2s;
+font-weight:700;
+overflow:hidden;
+}
 
-    label {
-      display: block;
-      margin: 14px 0 6px;
-      font-weight: 600;
-      font-size: 15px;
-    }
+/* ICON BOX (casino style) */
+.icon{
+width:34px;
+height:34px;
+border-radius:10px;
+display:flex;
+align-items:center;
+justify-content:center;
+background:rgba(255,255,255,0.06);
+font-size:18px;
+}
 
-    .games {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-    }
+/* ACTIVE */
+.game.active{
+border-color:var(--green);
+box-shadow:0 0 14px rgba(25,211,138,0.35);
+transform:scale(1.02);
+}
 
-    .game {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px;
-      background: #1a2336;
-      border-radius: 12px;
-      cursor: pointer;
-      border: 1px solid rgba(255,255,255,0.08);
-    }
+/* MOST POPULAR BADGE */
+.popular{
+position:absolute;
+top:6px;
+left:6px;
+font-size:10px;
+background:linear-gradient(90deg,var(--orange),var(--green));
+color:black;
+padding:3px 6px;
+border-radius:999px;
+font-weight:900;
+}
 
-    .input {
-      width: 100%;
-      padding: 14px;
-      border-radius: 12px;
-      border: none;
-      background: #1a2336;
-      color: white;
-      font-size: 15px;
-    }
+/* INPUT */
+.input{
+width:100%;
+padding:12px;
+border-radius:12px;
+border:none;
+background:var(--card);
+color:#fff;
+margin-top:6px;
+}
 
-    .hint {
-      font-size: 12px;
-      color: var(--muted);
-      margin-top: 4px;
-    }
+/* BUTTON */
+.btn{
+width:100%;
+margin-top:14px;
+padding:14px;
+border:none;
+border-radius:12px;
+font-weight:900;
+background:linear-gradient(90deg,var(--orange),var(--green));
+color:#000;
+cursor:pointer;
+}
 
-    .warning {
-      display: none;
-      color: var(--orange);
-      font-size: 13px;
-      margin-top: 6px;
-    }
+.btn:disabled{opacity:.5}
 
-    .btn {
-      width: 100%;
-      margin-top: 18px;
-      padding: 14px;
-      border-radius: 12px;
-      border: none;
-      font-weight: 700;
-      font-size: 18px;
-      background: linear-gradient(90deg, var(--orange), var(--green));
-      color: black;
-      cursor: pointer;
-    }
+/* POPUP */
+.popup{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.65);
+display:none;
+align-items:center;
+justify-content:center;
+}
 
-    .btn:disabled {
-      opacity: 0.6;
-    }
+.popup-box{
+background:var(--card);
+padding:20px;
+border-radius:16px;
+width:90%;
+max-width:320px;
+text-align:center;
+border:1px solid rgba(255,255,255,0.08);
+}
 
-    .progress {
-      display: none;
-      height: 10px;
-      background: #1a2336;
-      border-radius: 999px;
-      overflow: hidden;
-      margin-top: 14px;
-    }
+.popup-title{
+color:var(--orange);
+font-weight:900;
+margin-bottom:10px;
+}
 
-    .bar {
-      height: 100%;
-      width: 0;
-      background: linear-gradient(90deg, var(--green), var(--blue));
-      animation: fill 2.4s forwards;
-    }
+.popup-btn{
+margin-top:12px;
+width:100%;
+padding:10px;
+border:none;
+border-radius:10px;
+background:var(--green);
+color:#000;
+font-weight:800;
+cursor:pointer;
+}
 
-    @keyframes fill {
-      to { width: 100%; }
-    }
+/* TELEGRAM */
+.telegram{
+margin-top:12px;
+display:block;
+text-align:center;
+padding:12px;
+border-radius:12px;
+background:#229ED9;
+color:#fff;
+font-weight:800;
+text-decoration:none;
+}
 
-    .meta {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 16px;
-      font-size: 14px;
-      color: var(--muted);
-    }
+.meta{
+display:flex;
+justify-content:space-between;
+margin-top:12px;
+font-size:12px;
+color:var(--muted);
+}
 
-    #online { color: var(--green); }
-
-    .footer {
-      text-align: center;
-      font-size: 12px;
-      margin-top: 14px;
-      color: var(--muted);
-    }
-
-    .footer strong { color: white; }
-
-    @media (max-width: 420px) {
-      .games { grid-template-columns: 1fr; }
-    }
-  </style>
+#online{color:var(--green)}
+</style>
 </head>
 
 <body>
-  <div class="container">
-    <img src="https://flagcdn.com/w320/eg.png" class="flag">
 
-    <h1>Omar AI Predictor</h1>
-    <div class="subtitle">توقعات ذكية • جنيه مصري • نسخة مصر</div>
+<div class="container">
 
-    <div class="badges">
-      <div class="badge">🔒 آمن</div>
-      <div class="badge">⚡ ذكاء اصطناعي</div>
-      <div class="badge">🇪🇬 مصر</div>
-    </div>
+<div class="logo">Karim AI Predictor</div>
+<div class="subtitle">AI Game Analytics • Egypt Dashboard</div>
 
-    <label>اختر اللعبة</label>
-    <div class="games">
-      <label class="game"><input type="radio" name="game" checked> 🍎 Apple of Fortune</label>
-      <label class="game"><input type="radio" name="game"> ✈️ Aviator</label>
-      <label class="game"><input type="radio" name="game"> 💣 Mines</label>
-      <label class="game"><input type="radio" name="game"> 🐔 Chicken Road</label>
-      <label class="game"><input type="radio" name="game"> ⚽ Penalty</label>
-    </div>
+<div class="badges">
+<div class="badge">🔒 Secure</div>
+<div class="badge">⚡ AI System</div>
+<div class="badge">📊 Real-time</div>
+<div class="badge">🇪🇬 Egypt</div>
+</div>
 
-    <label>رقم حساب 1xBet</label>
-    <input id="account" class="input" placeholder="مثال: 1234567890" maxlength="10">
-    <div class="hint">أدخل رقم مكون من 10 أرقام</div>
-    <div id="warning" class="warning">يرجى إدخال رقم صحيح</div>
+<div class="section-title">اختر اللعبة</div>
 
-    <button id="start" class="btn" disabled>ابدأ</button>
+<div class="games">
 
-    <div class="progress" id="progress">
-      <div class="bar"></div>
-    </div>
+<div class="game active" data-game>
+<div class="icon">✈️</div>
+<div>Aviator</div>
+<div class="popular">Popular</div>
+</div>
 
-    <div class="meta">
-      <div>🟢 المتصلين: <span id="online">160</span></div>
-      <div>⏳ ينتهي خلال <span id="countdown">05:00</span></div>
-    </div>
+<div class="game" data-game>
+<div class="icon">💣</div>
+<div>Mines</div>
+</div>
 
-    <div class="footer">تم التطوير بواسطة <strong>OmarTech</strong></div>
-  </div>
+<div class="game" data-game>
+<div class="icon">🍎</div>
+<div>Apple of Fortune</div>
+</div>
 
-  <script>
-    let t = 300;
-    const cd = document.getElementById("countdown");
+<div class="game" data-game>
+<div class="icon">⚽</div>
+<div>Penalty</div>
+</div>
 
-    setInterval(() => {
-      if (t > 0) t--;
-      const m = String(Math.floor(t/60)).padStart(2,"0");
-      const s = String(t%60).padStart(2,"0");
-      cd.textContent = m + ":" + s;
-    },1000);
+<div class="game" data-game>
+<div class="icon">🐔</div>
+<div>Chicken Road</div>
+</div>
 
-    const online = document.getElementById("online");
-    setInterval(() => {
-      const base = 160;
-      const jitter = Math.floor(Math.random()*8)-3;
-      online.textContent = base + jitter;
-    },2500);
+</div>
 
-    const acc = document.getElementById("account");
-    const btn = document.getElementById("start");
-    const warn = document.getElementById("warning");
-    const prog = document.getElementById("progress");
+<div class="section-title">معرف الحساب 1xbet</div>
+<input class="input" id="acc" maxlength="10" placeholder="أدخل 10 أرقام">
 
-    acc.addEventListener("input", () => {
-      const valid = /^\d{10}$/.test(acc.value);
-      btn.disabled = !valid;
-      warn.style.display = valid ? "none" : "block";
-    });
+<button class="btn" id="btn" disabled>بدء تحليل AI</button>
 
-    btn.addEventListener("click", () => {
-      prog.style.display = "block";
-      const bar = prog.querySelector(".bar");
-      bar.style.animation = "none";
-      bar.offsetHeight;
-      bar.style.animation = "fill 2.4s forwards";
+<a class="telegram" href="https://t.me/KarimHassan_bot" target="_blank">
+Telegram Support
+</a>
 
-      setTimeout(() => {
-        alert("❌ لم يتم العثور على مبلغ الإيداع البالغ 300 جنيه مصري. يرجى إيداع مبلغ للمتابعة.");
-      },2400);
-    });
-  </script>
+<div class="meta">
+<div>⏳ 05:00</div>
+<div>🟢 Live</div>
+</div>
+
+</div>
+
+<!-- POPUP -->
+<div class="popup" id="popup">
+<div class="popup-box">
+<div class="popup-title">❌ لا يوجد إيداع</div>
+<div>للمتابعة، يرجى إيداع مبلغ 200 EGP</div>
+<button class="popup-btn" onclick="retry()">حاول مرة أخرى</button>
+</div>
+</div>
+
+<script>
+
+const games=document.querySelectorAll("[data-game]");
+
+games.forEach(g=>{
+g.addEventListener("click",()=>{
+games.forEach(x=>x.classList.remove("active"));
+g.classList.add("active");
+});
+});
+
+const acc=document.getElementById("acc");
+const btn=document.getElementById("btn");
+const popup=document.getElementById("popup");
+
+acc.addEventListener("input",()=>{
+acc.value=acc.value.replace(/\D/g,'');
+btn.disabled=acc.value.length!==10;
+});
+
+btn.addEventListener("click",()=>{
+setTimeout(()=>{
+popup.style.display="flex";
+},1200);
+});
+
+function retry(){
+popup.style.display="none";
+}
+
+</script>
+
 </body>
 </html>
